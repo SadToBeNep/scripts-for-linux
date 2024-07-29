@@ -24,7 +24,7 @@ async def luksWatcher():
 async def virtualMachineWatcher():
     output = check_output(['sudo','virsh','domstate','win11']).decode()
     if("off" in output):
-        print("  ❌ ")
+        pass
     else:
         print("  ✅ ")
 
