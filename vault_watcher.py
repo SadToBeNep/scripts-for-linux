@@ -14,25 +14,23 @@
 ### 
 import os
 from subprocess import check_output
-import asyncio
 
 
-async def luksWatcher():
+def luksWatcher():
     if(os.path.exists("/mnt/notsecret/CHECK")):
         print("☢️ ✅ ")
 
-async def virtualMachineWatcher():
+def virtualMachineWatcher():
     output = check_output(['sudo','virsh','domstate','win11']).decode()
     if("off" in output):
         pass
     else:
         print("  ✅ ")
 
-async def main():
-    await asyncio.gather(
-        luksWatcher(),
-        virtualMachineWatcher()
-    )
+def main():
+    luksWatcher()
+    print(" ")
+    virtualMachineWatcher()
 
 if __name__ == "__main__":
-   asyncio.run(main())
+   main()
