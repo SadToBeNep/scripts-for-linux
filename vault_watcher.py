@@ -18,7 +18,7 @@ from subprocess import check_output
 
 def luksWatcher():
     if(os.path.exists("/mnt/notsecret/CHECK")):
-        print("☢️ ✅ ")
+        print("🏛️ ✅ ")
 
 def virtualMachineWatcher():
     output = check_output(['sudo','virsh','domstate','win11']).decode()
@@ -27,10 +27,16 @@ def virtualMachineWatcher():
     else:
         print("  ✅ ")
 
+def checkCloudMountEnc():
+    if os.path.exists("/mnt/not-enc/CHECK"):
+        print("☁️ ✅  ")
+
 def main():
     luksWatcher()
     print(" ")
     virtualMachineWatcher()
+    print(" ")
+    checkCloudMountEnc()
 
 if __name__ == "__main__":
    main()
